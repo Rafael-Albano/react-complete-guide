@@ -1,5 +1,6 @@
-import "./ExpenseItem.css";
-import ExpensiveDate from "./ExpenseDate";
+import "../Expenses/ExpenseItem.css";
+import ExpensiveDate from "../Expenses/ExpenseDate";
+import Card from "../UI/Card";
 
 const ExpenseItem = ({ expenses }) => {
   return (
@@ -7,13 +8,13 @@ const ExpenseItem = ({ expenses }) => {
     <>
       {expenses.map(expense => {
         return(
-          <div className="expense-item">
+          <Card className="expense-item">
             <ExpensiveDate date={ expense.date }/>
             <div className="expense-item__description">
               <h2>{ expense.title }</h2>
               <div className="expense-item__price">{`R$${expense.amount}`}</div>
             </div>
-          </div>
+          </Card>
         );
       
       })}
