@@ -1,23 +1,33 @@
 import "../Expenses/ExpenseItem.css";
 import ExpensiveDate from "../Expenses/ExpenseDate";
 import Card from "../UI/Card";
+import { useState } from "react";
 
-const ExpenseItem = ({ expenses }) => {
+const ExpenseItem = ({ expense }) => {
+
+  console.log(expense);
+  const [ title, setTitle ] = useState(expense.title);
+
+  const clickHandler = () => {
+    setTitle('Title updated')
+    console.log(title);
+    
+    
+  }
   return (
 
     <>
-      {expenses.map(expense => {
-        return(
-          <Card className="expense-item">
-            <ExpensiveDate date={ expense.date }/>
-            <div className="expense-item__description">
-              <h2>{ expense.title }</h2>
-              <div className="expense-item__price">{`R$${expense.amount}`}</div>
-            </div>
-          </Card>
-        );
       
-      })}
+      <Card className="expense-item">
+        <ExpensiveDate date={ expense.date }/>
+        <div className="expense-item__description">
+          <h2>{ title }</h2>
+          <div className="expense-item__price">{`R$${expense.amount}`}</div>
+          <button onClick={clickHandler}>Change Title</button>
+        </div>
+      </Card>
+      
+      
     </>
   );
 }
